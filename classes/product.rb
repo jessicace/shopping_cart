@@ -10,8 +10,12 @@ class Product < Database
     @category = category
   end
 
+  def self.table_name
+    TABLE_NAME
+  end
+
   def self.all
-    res = connection.exec("SELECT * FROM #{TABLE_NAME}")
+    res = super
     hash = {}
     res.each do |row|
       hash[row['id']] = self.new(row['id'], row['name'], row['price'], row['gst'], row['category'])
