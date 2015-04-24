@@ -19,11 +19,12 @@ class Product < Database
     hash
   end
 
-  def self.read
-
+  def self.read(item_id)
+    item = item_id.to_s
+    return self.all[item]
   end
   
   def to_s
-    "#{@name.capitalize} : $#{@price} (GST: #{@gst}) #{@id} Category: #{@category.capitalize}"
+    "#{@name.capitalize} : #{@price} (GST: #{@gst}) #{@id} Category: #{@category.capitalize}"
   end
 end
